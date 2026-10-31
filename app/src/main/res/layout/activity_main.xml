@@ -7,13 +7,98 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/leftguideLine"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="50dp"/>
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginBarrier"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="tvusername,tvpass"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Welcome!"
+        android:id="@+id/weltext"
+        android:paddingTop="200dp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvusername"
+        android:text="Username"
+        android:layout_marginTop="100dp"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/leftguideLine"
+        app:layout_constraintTop_toBottomOf="@id/weltext"/>
+
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etusername"
+        android:hint="Enter usename"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@id/weltext"
+        app:layout_constraintStart_toEndOf="@id/loginBarrier"/>
+
+
+    <TextView
+        android:id="@+id/tvpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="60dp"
+        android:paddingTop="10dp"
+        android:text="Password"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/leftguideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvusername" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etpass"
+        android:hint="Enter password"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@id/etusername"
+        app:layout_constraintStart_toEndOf="@id/loginBarrier"/>
+
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginButton"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="100dp"
+        android:text="Login"
+        app:layout_constraintTop_toBottomOf="@id/etpass"
+        app:layout_constraintStart_toEndOf="@id/leftguideLine"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/credgrp"
+        app:constraint_referenced_ids="etusername,etpass"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

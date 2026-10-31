@@ -4,6 +4,12 @@ plugins {
 }
 
 android {
+
+
+    buildFeatures{
+        viewBinding = true
+    }
+
     namespace = "com.example.kotlin_mvvm_retrofit"
     compileSdk = 35
 
