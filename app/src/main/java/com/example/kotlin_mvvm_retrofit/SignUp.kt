@@ -29,11 +29,21 @@ class SignUp:AppCompatActivity() {
                 Toast.makeText(this,"user already exists",Toast.LENGTH_SHORT).show()
             }
             else{
-                pref.edit().putString(binding.signupnameet.text.toString(),binding.signuppasset.text.toString()).apply()
-                Toast.makeText(this,"User register successfull", Toast.LENGTH_SHORT).show()
+                if(binding.signupNumet.text.toString().length == 10 && binding.signupnameet.text.toString().length != 0
+                    && binding.signuppasset.text.toString().length != 0 && binding.signupEmailet.text.toString().contains("@gmail.com")){
+                    pref.edit().putString(binding.signupnameet.text.toString(),binding.signuppasset.text.toString()).apply()
+                    Toast.makeText(this,"User register successfull", Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
+                    val intent = Intent(this,MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(this,"Enter valid credentials",Toast.LENGTH_SHORT).show()
+
+
+                }
+
 
             }
 

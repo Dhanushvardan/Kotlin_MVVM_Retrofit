@@ -54,27 +54,32 @@ class MainActivity : AppCompatActivity() {
 
             val name = binding.etusername.text.toString()
 
+            if(binding.etusername.text.toString().length != 0){
+                if(prefs.contains(name)){
+                    val intent = Intent(this,HomePage::class.java)
+                    if(binding.etpass.text.toString() == prefs.getString(name,"") && binding.etusername.text.toString().length != 0)
+                    {
+                        intent.putExtra("user_name",name)
 
-            if(prefs.contains(name)){
-                val intent = Intent(this,HomePage::class.java)
-                if(binding.etpass.text.toString() == prefs.getString(name,""))
-                {
-                    intent.putExtra("user_name",name)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this,"Invalid Password",Toast.LENGTH_SHORT).show()
+                    }
 
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+
                 }
                 else{
-                    Toast.makeText(this,"Password is invalid",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Register To LogIn",Toast.LENGTH_SHORT).show()
+                    val intnt = Intent(this,SignUp::class.java)
+                    startActivity(intnt)
                 }
-
-
             }
             else{
-                Toast.makeText(this,"Register To LogIn",Toast.LENGTH_SHORT).show()
-                val intnt = Intent(this,SignUp::class.java)
-                startActivity(intnt)
+                Toast.makeText(this,"Invalid credentials",Toast.LENGTH_SHORT).show()
             }
+
 
 
 
