@@ -2,6 +2,7 @@ package com.example.kotlin_mvvm_retrofit
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
         val isLoggedIn = prefs.getBoolean("isLoggedIn",false)
 
 
@@ -45,17 +48,35 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
         binding.loginButton.setOnClickListener{
 
             val name = binding.etusername.text.toString()
 
-            val intent = Intent(this,HomePage::class.java)
+
+            if(prefs.contains(name)){
+                val intent = Intent(this,HomePage::class.java)
+                if(binding.etpass.text.toString() == prefs.getString(name,""))
+                {
+                    intent.putExtra("user_name",name)
+
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(this,"Password is invalid",Toast.LENGTH_SHORT).show()
+                }
 
 
-            intent.putExtra("user_name",name)
+            }
+            else{
+                Toast.makeText(this,"Register To LogIn",Toast.LENGTH_SHORT).show()
+                val intnt = Intent(this,SignUp::class.java)
+                startActivity(intnt)
+            }
 
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+
 
 
 

@@ -22,9 +22,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomePage"
-            android:exported="false">
+            android:exported="false"
+            android:launchMode="singleTask">
+
 
         </activity>
+        <activity android:name=".profiles"
+            android:exported="false"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Notes"
+            android:exported="false"
+            android:launchMode="singleTask"/>
+        <activity android:name=".SignUp"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

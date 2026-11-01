@@ -14,7 +14,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/leftguideLine"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="50dp"/>
+        app:layout_constraintGuide_begin="30dp"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rightGuideLine"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp"/>
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -54,6 +62,7 @@
         android:id="@+id/etusername"
         android:hint="Enter usename"
         android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="@id/rightGuideLine"
         android:layout_marginLeft="25dp"
         app:layout_constraintTop_toBottomOf="@id/weltext"
         app:layout_constraintStart_toEndOf="@id/loginBarrier"/>
@@ -77,7 +86,9 @@
         android:id="@+id/etpass"
         android:hint="Enter password"
         android:layout_marginTop="50dp"
+        android:inputType="textPassword"
         android:layout_marginLeft="25dp"
+        app:layout_constraintEnd_toEndOf="@id/rightGuideLine"
         app:layout_constraintTop_toBottomOf="@id/etusername"
         app:layout_constraintStart_toEndOf="@id/loginBarrier"/>
 

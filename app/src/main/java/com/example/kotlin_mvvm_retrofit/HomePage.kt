@@ -3,6 +3,7 @@ package com.example.kotlin_mvvm_retrofit
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,7 @@ class HomePage:AppCompatActivity() {
 
         setContentView(binding.root)
 
+        Toast.makeText(this,"Loading Data",Toast.LENGTH_SHORT).show()
 
         val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
 
@@ -47,7 +49,28 @@ class HomePage:AppCompatActivity() {
 
         vM.getData()
 
+        binding.bottomBar.setOnItemSelectedListener{
+            item->
+            when(item.itemId){
+                R.id.home-> {
+                    val intt = Intent(this,HomePage::class.java)
+                    startActivity(intt)
+                    true
+                }
+                R.id.profile->{
+                    val intent = Intent(this,profiles::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.notes->{
+                    val intnt = Intent(this,Notes::class.java)
+                    startActivity(intnt)
+                    true
+                }
+else -> false
+            }
 
+        }
 
 
         binding.logoutButton.setOnClickListener{
