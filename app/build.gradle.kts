@@ -8,6 +8,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
 
     namespace = "com.example.kotlin_mvvm_retrofit"
@@ -51,4 +52,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // Retrofit: makes HTTP API calls
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+
+// Converts JSON response into Kotlin objects
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+// ViewModel and LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+
+// Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 }
